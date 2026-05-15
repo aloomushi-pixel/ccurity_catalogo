@@ -724,3 +724,174 @@ body {
   padding: 2px;
 }
 
+
+/* Logo Animation CSS */
+
+    body.cc-logo-svg:active,
+    .cc-fil0 .cc-str0,
+    .cc-logo-svg:active,
+    .alogo:active,
+    .cc-logo-part:active {
+        background: none !important;
+    }
+
+    /* ==================================================
+   CONTENEDORES SVG
+   ================================================== */
+    .cc-logo-svg {
+        height: 66px;
+        display: block;
+        overflow: visible;
+        /* Permite animaciones que entran desde fuera */
+    }
+
+    /* Desktop domina el espacio en pantallas grandes */
+    .cc-logo-desktop {
+        width: 100%;
+    }
+
+    /* Mobile asume 100px para mantener su proporción cuadrada */
+    .cc-logo-mobile {
+        width: 100px;
+    }
+
+    /* ESTILOS BASE COMPARTIDOS */
+    .cc-fil0 {
+        fill: none;
+    }
+
+    .cc-fil2 {
+        fill: #004F7D;
+    }
+
+    /* Ícono principal */
+    .cc-fil1 {
+        fill: #4D4D4D;
+        fill-rule: evenodd;
+    }
+
+    /* Texto oscuro */
+    .cc-str0 {
+        stroke: #E6E7E8;
+        stroke-width: 16.92;
+        stroke-miterlimit: 22.9256;
+    }
+
+    /* ==================================================
+   LOGICA DE VISUALIDAD (MEDIA QUERIES)
+   ================================================== */
+    /* Por defecto (Desktop / Tablet): Se muestra desktop, se oculta móvil */
+    .cc-logo-mobile {
+        display: none;
+    }
+
+    .cc-logo-desktop {
+        display: block;
+    }
+
+    /* En resoluciones menores a 767px (Smartphones): Intercambio */
+    @media (max-width: 767px) {
+        .cc-logo-desktop {
+            display: none;
+        }
+
+        .cc-logo-mobile {
+            display: block;
+            margin-left: -5px;
+            /* Ajuste histórico que tenías para móvil */
+        }
+    }
+
+    /* ==================================================
+   ANIMACIÓN DESKTOP: Clásico Restaurado
+   Rotación sutil y barrido de texto 
+   ================================================== */
+    .cc-logo-desktop .cc-logo-part {
+        opacity: 0;
+        transform-box: fill-box;
+        transform-origin: center;
+        transform: rotate(-5deg) translateX(-20px);
+        animation: desktopRotateIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    .cc-logo-desktop .cc-icon-1 {
+        animation-delay: 0.1s;
+    }
+
+    .cc-logo-desktop .cc-icon-2 {
+        animation-delay: 0.2s;
+        transform: translateY(-100%);
+    }
+
+    .cc-logo-desktop .cc-icon-3 {
+        animation-delay: 0.3s;
+    }
+
+    .cc-logo-desktop .cc-text-body {
+        transform: translateY(-100%);
+        animation-delay: 0.5s;
+        clip-path: inset(0 100% 0 0);
+        animation-name: desktopRotateIn, desktopRevealText;
+        animation-duration: 0.8s, 1.2s;
+        animation-fill-mode: forwards;
+        transform: rotate(-2deg) translateX(-10px);
+    }
+
+    @keyframes desktopRotateIn {
+        to {
+            opacity: 1;
+            transform: rotate(0deg) translateX(0);
+        }
+    }
+
+    @keyframes desktopRevealText {
+        to {
+            clip-path: inset(0 0 0 0);
+        }
+    }
+
+    /* ==================================================
+   ANIMACIÓN MÓVIL: Órbita (Orbital Entry)
+   La 'C' gira al entrar y el punto entra orbitando
+   ================================================== */
+    /* Ocultamos inicialmente las piezas móviles */
+    .cc-logo-mobile .cc-logo-part {
+        opacity: 0;
+    }
+
+    .cc-logo-mobile .cc-icon-c {
+        transform-origin: center;
+        animation: mobileSpinIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    .cc-logo-mobile .cc-icon-dot {
+        transform-origin: center;
+        /* Inicia oculto, desplazado lejos y pequeño */
+        transform: translate(200px, -200px) scale(0);
+        animation: mobileDotOrbit 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        animation-delay: 0.2s;
+    }
+
+    @keyframes mobileSpinIn {
+        0% {
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.5);
+        }
+
+        100% {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+    }
+
+    @keyframes mobileDotOrbit {
+        0% {
+            opacity: 0;
+            transform: translate(150px, -150px) scale(0);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translate(0, 0) scale(1);
+        }
+    }

@@ -1,3 +1,294 @@
+<style>
+/* Menu CSS */
+
+/* Menu Button */
+.cc-menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background-color: #f1f5f9;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 50;
+}
+
+.cc-menu-button:hover {
+  background-color: #e2e8f0;
+}
+
+.cc-menu-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Menu Panel (Overlay) */
+.cc-menu-wrapper {
+  position: relative;
+  z-index: 40;
+}
+
+.cc-menu-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.cc-menu-panel.menu-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Layout */
+.cc-menu-outer {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 24px 40px;
+}
+
+.cc-menu-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+@media (max-width: 1024px) {
+  .cc-menu-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Typography & Lists */
+.cc-menu-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 24px;
+  letter-spacing: 0.1em;
+}
+
+.cc-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cc-menu-item-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.cc-menu-item-heading-icon {
+  width: 18px;
+  height: 18px;
+  color: #3b82f6;
+}
+
+.cc-menu-subitem {
+  margin-bottom: 10px;
+  padding-left: 26px;
+}
+
+.cc-menu-link {
+  color: #475569;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.cc-menu-link:hover {
+  color: #3b82f6;
+}
+
+.cc-menu-section-spacer {
+  margin-top: 24px;
+}
+
+/* Cards */
+.cc-menu-top-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .cc-menu-top-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cc-menu-card, .cc-solutions-card, .cc-info-card, .cc-brand-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Solutions List */
+.cc-solutions-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+}
+
+.cc-solutions-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #475569;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.cc-solutions-link:hover {
+  color: #3b82f6;
+}
+
+.cc-solutions-icon {
+  width: 20px;
+  height: 20px;
+  color: #94a3b8;
+}
+
+/* Info Card */
+.cc-info-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.cc-info-links-list {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cc-wa-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #25d366;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.cc-wa-button:hover {
+  background-color: #128c7e;
+}
+
+.cc-wa-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Brands Right Side */
+.cc-brand-card {
+  background-color: #0f172a;
+  color: white;
+  height: 100%;
+}
+
+.cc-brand-heading {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.cc-brand-subheading {
+  color: #94a3b8;
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+.cc-primary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #3b82f6;
+  color: white;
+  padding: 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 32px;
+  transition: background-color 0.2s ease;
+}
+
+.cc-primary-button:hover {
+  background-color: #2563eb;
+}
+
+.cc-primary-button-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.cc-brand-logos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+}
+
+.cc-brand-logo-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s ease;
+}
+
+.cc-brand-logo-link:hover {
+  color: white;
+}
+
+.cc-brand-logo-favicon img {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background: white;
+  padding: 2px;
+}
+
+
+</style>
+
 <!-- Estructura JSON-LD (Marcado Estructurado Schema.org) para el ecosistema CCurity -->
 <script type="application/ld+json">
 {
