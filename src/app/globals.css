@@ -895,3 +895,14 @@ body {
             transform: translate(0, 0) scale(1);
         }
     }
+
+
+/* Top Bar Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}

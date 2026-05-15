@@ -42,7 +42,34 @@ export default function Header() {
       }
       ` }} />
 
-<header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white shadow-sm">
+      <div className="relative flex h-10 w-full items-center overflow-hidden border-b border-slate-200 bg-slate-50">
+        <div className="flex animate-marquee whitespace-nowrap text-[13px] font-medium text-slate-500">
+          <div className="flex min-w-full items-center justify-around px-4">
+            <span className="mx-6">Acerca de nosotros</span>
+            <span className="mx-6">Bolsa de trabajo</span>
+            <span className="mx-6">Política de privacidad</span>
+            <span className="mx-6">Términos y condiciones</span>
+            <span className="mx-6">Datos fiscales y de pago</span>
+          </div>
+          <div className="flex min-w-full items-center justify-around px-4" aria-hidden="true">
+            <span className="mx-6">Acerca de nosotros</span>
+            <span className="mx-6">Bolsa de trabajo</span>
+            <span className="mx-6">Política de privacidad</span>
+            <span className="mx-6">Términos y condiciones</span>
+            <span className="mx-6">Datos fiscales y de pago</span>
+          </div>
+        </div>
+        <div className="absolute right-0 top-0 z-10 flex h-full items-center border-l border-slate-200 bg-white px-4 md:px-6 shadow-[-15px_0_15px_-5px_rgba(255,255,255,1)]">
+          <a href="https://wa.me/525580875650" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 rounded-full bg-[#25D366] px-3.5 py-1.5 text-[13px] font-bold text-white transition-colors hover:bg-[#128C7E] shadow-sm">
+            <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12.013 2.008C6.49 2.008 2 6.498 2 12.021c0 1.764.462 3.483 1.34 5.002L2 22l5.122-1.343c1.48.816 3.16 1.246 4.891 1.246 5.522 0 10.013-4.49 10.013-10.013 0-5.523-4.491-10.013-10.013-10.013zm5.666 14.497c-.24.675-1.393 1.275-1.93 1.366-.537.09-1.238.163-3.415-.742-2.616-1.085-4.298-3.75-4.44-3.938-.142-.187-1.062-1.41-1.062-2.69 0-1.28.665-1.91 1.006-2.272.34-.362.744-.452.99-.452.246 0 .493.003.705.012.217.01.507-.085.792.604.285.69.972 2.373 1.057 2.544.086.171.143.372.028.6-.115.228-.172.373-.343.575-.172.202-.358.423-.515.586-.172.172-.35.358-.152.697.2.34.887 1.464 1.91 2.376 1.321 1.176 2.41 1.54 2.75 1.696.342.155.54.128.745-.11.202-.238.874-1.018 1.104-1.366.23-.348.46-.29.77-.171.312.12 1.977.933 2.318 1.103.342.172.57.257.656.402.086.144.086.837-.154 1.512z"/>
+            </svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+<header className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white shadow-sm">
   <div className="mx-auto flex h-20 max-w-[1440px] items-center gap-6 px-6">
     
     {/* Menu Button */}
