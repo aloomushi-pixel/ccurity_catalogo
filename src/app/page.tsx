@@ -79,20 +79,48 @@ export default async function ServicesCatalogPage() {
     });
 
     if (validConcepts.length > 0) {
-      services = validConcepts.map((c, i) => ({
-        id: c.id || `s-${i}`,
-        name: c.title || c.name || 'Servicio',
-        sku: c.satCode || c.sku || 'SRV-ESP',
-        category: 'Mano de Obra', // Defaulting to 'Mano de Obra' since ConceptCategory requires additional RLS permission
-        price: Number(c.basePrice || c.price || 0),
-        image_url: c.imageUrl || c.image_url || null,
-        features: c.description ? [c.description] : []
-      }));
+      services = validConcepts.map((c, i) => {
+        // Dynamic Category Fallback Mapping
+        const t = c.title.toLowerCase();
+        let cat = 'Mano de Obra General';
+        if (t.includes('cctv') || t.includes('video') || t.includes('camara') || t.includes('cámara')) cat = 'Videovigilancia';
+        else if (t.includes('acceso') || t.includes('porton') || t.includes('portón')) cat = 'Control de Acceso';
+        else if (t.includes('red') || t.includes('nodo') || t.includes('vlan')) cat = 'Redes y Telecom';
+        else if (t.includes('cerca')) cat = 'Seguridad Perimetral';
+        else if (t.includes('tuberia') || t.includes('tubería') || t.includes('canalizacion') || t.includes('charola')) cat = 'Canalización';
+        else if (t.includes('ranurado') || t.includes('registro') || t.includes('cimentación') || t.includes('soporte')) cat = 'Infraestructura';
+        else if (t.includes('rastreo') || t.includes('gps')) cat = 'Rastreo Vehicular';
+
+        // Dynamic Image Fallback Mapping
+        let img = c.imageUrl || c.image_url || null;
+        if (!img) {
+          if (cat === 'Videovigilancia') img = '/images/services/tech_cctv.png';
+          else if (cat === 'Control de Acceso') img = '/images/services/tech_access_control.png';
+          else if (cat === 'Redes y Telecom') img = '/images/services/tech_network_nodes.png';
+          else if (cat === 'Seguridad Perimetral') img = '/images/services/tech_electric_fence.png';
+          else if (cat === 'Canalización') img = '/images/services/tech_conduit.png';
+          else if (cat === 'Infraestructura') img = '/images/services/tech_trenching.png';
+          else if (cat === 'Rastreo Vehicular') img = '/images/services/tech_gps_tracking.png';
+          else img = '/images/services/tech_infrastructure.png';
+        }
+
+        return {
+          id: c.id || `s-${i}`,
+          name: c.title || c.name || 'Servicio',
+          sku: c.satCode || c.sku || 'SRV-ESP',
+          category: cat,
+          price: Number(c.basePrice || c.price || 0),
+          image_url: img,
+          features: c.description ? [c.description] : []
+        };
+      });
       usingMockData = false;
     }
   }
 
-  const categories = ['Todos', 'Instalación', 'Mantenimiento', 'Configuración', 'Soporte'];
+  // Extract unique categories from actual data
+  const uniqueCats = Array.from(new Set(services.map(s => s.category)));
+  const categories = ['Todos', ...uniqueCats.filter(c => c !== 'Todos')];
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900 selection:bg-blue-500/30 font-sans">
