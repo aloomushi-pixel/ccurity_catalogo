@@ -65,7 +65,7 @@ export default async function ServicesCatalogPage() {
   // We fetch concepts, and we will filter in JS to avoid PostgREST column name crashes
   const { data: dbConcepts, error } = await supabase
     .from('MasterConcept')
-    .select('*')
+    .select('*, ConceptCategory(name)')
     .limit(100);
 
   let services = MOCK_SERVICES;
@@ -80,27 +80,30 @@ export default async function ServicesCatalogPage() {
 
     if (validConcepts.length > 0) {
       services = validConcepts.map((c, i) => {
-        // Dynamic Category Fallback Mapping
+        // Dynamic Category Mapping from the Database
+        const dbCategoryName = c.ConceptCategory?.name || 'Mano de Obra General';
+
+        // Fallback Mapping for Images (Until the user updates the DB with the SQL script)
         const t = c.title.toLowerCase();
-        let cat = 'Mano de Obra General';
-        if (t.includes('cctv') || t.includes('video') || t.includes('camara') || t.includes('cámara')) cat = 'Videovigilancia';
-        else if (t.includes('acceso') || t.includes('porton') || t.includes('portón')) cat = 'Control de Acceso';
-        else if (t.includes('red') || t.includes('nodo') || t.includes('vlan')) cat = 'Redes y Telecom';
-        else if (t.includes('cerca')) cat = 'Seguridad Perimetral';
-        else if (t.includes('tuberia') || t.includes('tubería') || t.includes('canalizacion') || t.includes('charola')) cat = 'Canalización';
-        else if (t.includes('ranurado') || t.includes('registro') || t.includes('cimentación') || t.includes('soporte')) cat = 'Infraestructura';
-        else if (t.includes('rastreo') || t.includes('gps')) cat = 'Rastreo Vehicular';
+        let fallbackCat = 'General';
+        if (t.includes('cctv') || t.includes('video') || t.includes('camara') || t.includes('cámara')) fallbackCat = 'Videovigilancia';
+        else if (t.includes('acceso') || t.includes('porton') || t.includes('portón')) fallbackCat = 'Control de Acceso';
+        else if (t.includes('red') || t.includes('nodo') || t.includes('vlan')) fallbackCat = 'Redes y Telecom';
+        else if (t.includes('cerca')) fallbackCat = 'Seguridad Perimetral';
+        else if (t.includes('tuberia') || t.includes('tubería') || t.includes('canalizacion') || t.includes('charola')) fallbackCat = 'Canalización';
+        else if (t.includes('ranurado') || t.includes('registro') || t.includes('cimentación') || t.includes('soporte')) fallbackCat = 'Infraestructura';
+        else if (t.includes('rastreo') || t.includes('gps')) fallbackCat = 'Rastreo Vehicular';
 
         // Dynamic Image Fallback Mapping
         let img = c.imageUrl || c.image_url || null;
         if (!img) {
-          if (cat === 'Videovigilancia') img = '/images/services/tech_cctv.png';
-          else if (cat === 'Control de Acceso') img = '/images/services/tech_access_control.png';
-          else if (cat === 'Redes y Telecom') img = '/images/services/tech_network_nodes.png';
-          else if (cat === 'Seguridad Perimetral') img = '/images/services/tech_electric_fence.png';
-          else if (cat === 'Canalización') img = '/images/services/tech_conduit.png';
-          else if (cat === 'Infraestructura') img = '/images/services/tech_trenching.png';
-          else if (cat === 'Rastreo Vehicular') img = '/images/services/tech_gps_tracking.png';
+          if (fallbackCat === 'Videovigilancia') img = '/images/services/tech_cctv.png';
+          else if (fallbackCat === 'Control de Acceso') img = '/images/services/tech_access_control.png';
+          else if (fallbackCat === 'Redes y Telecom') img = '/images/services/tech_network_nodes.png';
+          else if (fallbackCat === 'Seguridad Perimetral') img = '/images/services/tech_electric_fence.png';
+          else if (fallbackCat === 'Canalización') img = '/images/services/tech_conduit.png';
+          else if (fallbackCat === 'Infraestructura') img = '/images/services/tech_trenching.png';
+          else if (fallbackCat === 'Rastreo Vehicular') img = '/images/services/tech_gps_tracking.png';
           else img = '/images/services/tech_infrastructure.png';
         }
 
@@ -108,7 +111,7 @@ export default async function ServicesCatalogPage() {
           id: c.id || `s-${i}`,
           name: c.title || c.name || 'Servicio',
           sku: c.satCode || c.sku || 'SRV-ESP',
-          category: cat,
+          category: dbCategoryName,
           price: Number(c.basePrice || c.price || 0),
           image_url: img,
           features: c.description ? [c.description] : []
