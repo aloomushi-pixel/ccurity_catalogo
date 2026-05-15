@@ -1,25 +1,26 @@
 import { Metadata } from 'next';
 import { supabase } from '@/lib/supabase';
-import { extractIdFromSlug } from '@/lib/utils';
+import { slugify } from '@/lib/utils';
 import { Shield, ArrowLeft, CheckCircle2, Zap, Clock, ShieldCheck, HardHat } from 'lucide-react';
 import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
 
 type PageProps = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ category: string; slug: string }>;
 };
 
 // 1. DYNAMIC METADATA PARA SEO Y REDES SOCIALES
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolvedParams = await params;
-  const id = extractIdFromSlug(resolvedParams.slug);
 
-  const { data: service } = await supabase
+  // We must fetch all services and match the slug because we don't use UUID in URL anymore
+  const { data: services } = await supabase
     .from('MasterConcept')
     .select('*, ConceptCategory(name)')
-    .eq('id', id)
-    .single();
+    .eq('type', 'SERVICE');
+
+  const service = services?.find(s => slugify(s.title) === resolvedParams.slug);
 
   if (!service) {
     return { title: 'Servicio no encontrado | CCURITY' };
@@ -42,13 +43,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ServicePage({ params }: PageProps) {
   const resolvedParams = await params;
-  const id = extractIdFromSlug(resolvedParams.slug);
 
-  const { data: service, error } = await supabase
+  const { data: services, error } = await supabase
     .from('MasterConcept')
     .select('*, ConceptCategory(name)')
-    .eq('id', id)
-    .single();
+    .eq('type', 'SERVICE');
+
+  const service = services?.find(s => slugify(s.title) === resolvedParams.slug);
 
   if (error || !service) {
     return (

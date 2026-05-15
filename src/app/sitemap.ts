@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 import { supabase } from '@/lib/supabase';
-import { generateServiceSlug } from '@/lib/utils';
+import { generateServicePath } from '@/lib/utils';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://catalogo.ccurity.com.mx';
@@ -8,17 +8,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Obtener todos los servicios activos
   const { data: services } = await supabase
     .from('MasterConcept')
-    .select('id, title, updatedAt')
+    .select('id, title, updatedAt, ConceptCategory(name)')
     .eq('type', 'SERVICE')
     .order('updatedAt', { ascending: false });
 
   // Rutas dinámicas
-  const serviceUrls = (services || []).map((service) => ({
-    url: `${baseUrl}/servicio/${generateServiceSlug(service.id, service.title)}`,
-    lastModified: new Date(service.updatedAt || new Date()),
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }));
+  const serviceUrls = (services || []).map((service) => {
+    const categoryName = service.ConceptCategory?.name || 'Mano de Obra General';
+    return {
+      url: `${baseUrl}${generateServicePath(categoryName, service.title)}`,
+      lastModified: new Date(service.updatedAt || new Date()),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    };
+  });
 
   // Ruta principal
   return [

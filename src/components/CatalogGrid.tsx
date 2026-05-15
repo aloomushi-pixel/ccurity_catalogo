@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Shield, ArrowRight, Activity, Wrench, Settings, CheckCircle2 } from 'lucide-react';
-import { generateServiceSlug } from '@/lib/utils';
+import { generateServicePath } from '@/lib/utils';
 
 export type ServiceItem = {
   id: string;
@@ -64,9 +64,9 @@ export function CatalogGrid({ services, categories }: CatalogGridProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredServices.length > 0 ? (
             filteredServices.map((service) => {
-              const slug = generateServiceSlug(service.id, service.name);
+              const path = generateServicePath(service.category, service.name);
               return (
-                <Link href={`/servicio/${slug}`} key={service.id} className="group flex flex-col bg-white rounded-2xl border border-neutral-200/60 overflow-hidden hover:shadow-2xl hover:shadow-blue-900/5 hover:-translate-y-1 transition-all duration-300">
+                <Link href={path} key={service.id} className="group flex flex-col bg-white rounded-2xl border border-neutral-200/60 overflow-hidden hover:shadow-2xl hover:shadow-blue-900/5 hover:-translate-y-1 transition-all duration-300">
                   {/* Card Image */}
                   <div className="aspect-[4/3] w-full bg-neutral-100 relative overflow-hidden">
                     {service.image_url ? (

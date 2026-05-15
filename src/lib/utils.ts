@@ -11,13 +11,9 @@ export function slugify(text: string): string {
     .replace(/\-\-+/g, '-'); // replace multiple - with single -
 }
 
-// Generates a predictable URL slug using the UUID and the title
-export function generateServiceSlug(id: string, title: string): string {
-  return `${id}-${slugify(title)}`;
-}
-
-// Extracts the ID from the slug
-export function extractIdFromSlug(slug: string): string {
-  // Assuming the UUID is always the first 36 characters
-  return slug.substring(0, 36);
+// Generates a predictable URL path using category and title
+export function generateServicePath(categoryName: string, title: string): string {
+  // If category is somehow missing, fallback to 'general'
+  const cat = categoryName ? slugify(categoryName) : 'general';
+  return `/${cat}/${slugify(title)}`;
 }
