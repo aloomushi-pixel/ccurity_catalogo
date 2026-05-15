@@ -44,17 +44,7 @@ export default function Header() {
 
 <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 backdrop-blur-md">
   <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-6">
-    {/* Logo */}
-    <Link href="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
-      <div className="flex flex-col">
-        <span className="text-2xl font-black tracking-tighter text-slate-900">
-          C-CURITY
-        </span>
-        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">
-          Industrial Solutions
-        </span>
-      </div>
-    </Link>
+    <div className="flex-1"></div>
 
     {/* Menu Button */}
     <button id="menu-button" type="button" className={`cc-menu-button ${isOpen ? '!bg-slate-200' : '!bg-white/50'} hover:!bg-slate-100`} onClick={toggleMenu} aria-expanded={isOpen ? "true" : "false"} aria-controls="menu" aria-label="Abrir menú de navegación">

@@ -129,34 +129,23 @@ export default async function ServicesCatalogPage() {
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900 selection:bg-blue-500/30 font-sans">
       
-      {/* Navbar Minimalista */}
-      <nav className="sticky top-0 z-50 border-b border-black/5 bg-white/80 backdrop-blur-xl">
-        <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-500 flex items-center justify-center shadow-lg shadow-blue-500/20">
-              <Shield className="h-5 w-5 text-white" />
-            </div>
-            <span className="text-2xl font-bold tracking-tight text-neutral-900">
-              CCURITY <span className="font-light text-neutral-400">SERVICES</span>
-            </span>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <button className="px-6 py-2.5 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-all hover:shadow-lg hover:shadow-neutral-900/20 active:scale-95">
-              Cotizar Proyecto
-            </button>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section */}
-      <header className="relative pt-24 pb-16 overflow-hidden bg-white">
+      <header className="relative pt-12 pb-16 overflow-hidden bg-white">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-50 via-white to-white opacity-50"></div>
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-50/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold tracking-widest uppercase mb-8">
+            <div className="flex flex-col mb-8">
+              <span className="text-3xl font-black tracking-tighter text-slate-900">
+                C-CURITY
+              </span>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">
+                Industrial Solutions
+              </span>
+            </div>
+
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold tracking-widest uppercase mb-6">
               <Zap className="h-3.5 w-3.5" />
               <span>División de Servicios B2B</span>
             </div>
@@ -170,6 +159,12 @@ export default async function ServicesCatalogPage() {
               Catálogo estructurado de servicios para integradores. Encuentra costos exactos de instalación, configuración y mantenimiento para armar tus presupuestos con precisión milimétrica.
             </p>
 
+            <div className="flex items-center gap-4 mb-10">
+              <button className="px-8 py-4 rounded-full bg-blue-600 text-white text-lg font-medium hover:bg-blue-700 transition-all hover:shadow-lg hover:shadow-blue-500/30 active:scale-95">
+                Cotizar Proyecto
+              </button>
+            </div>
+
             {usingMockData && (
               <div className="inline-flex items-center gap-3 px-4 py-3 rounded-xl bg-yellow-50 border border-yellow-200 text-yellow-800 text-sm font-medium mb-8">
                 <span className="flex h-2 w-2 rounded-full bg-yellow-500 animate-pulse"></span>
@@ -182,19 +177,6 @@ export default async function ServicesCatalogPage() {
 
       {/* Catálogo Interactivo (Client Component) */}
       <CatalogGrid services={services} categories={categories} />
-
-      {/* Footer Minimalista */}
-      <footer className="bg-white border-t border-neutral-200 py-12">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-2">
-            <Shield className="h-6 w-6 text-neutral-300" />
-            <span className="text-lg font-bold tracking-tight text-neutral-300">CCURITY</span>
-          </div>
-          <p className="text-sm text-neutral-400">
-            © {new Date().getFullYear()} CCURITY Networks. Catálogo de Servicios B2B.
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }
