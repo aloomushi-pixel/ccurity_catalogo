@@ -19,3 +19,708 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* Footer CSS */
+
+/* Reset & Fonts Layer */
+.cc-stripe-module,
+.cc-footer {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+}
+
+.cc-stripe-module *,
+.cc-footer * {
+  box-sizing: inherit;
+}
+
+/* =========================================
+   ESTILOS: MÓDULO STRIPE LEVANTAMIENTO
+   ========================================= */
+.cc-stripe-module {
+  background-color: #f8fafc; /* Fondo Off-White Slate 50 */
+  padding: 64px 24px;
+}
+
+.cc-stripe-container {
+  max-width: 900px; /* Ancho acotado para UI tipo checkout */
+  margin: 0 auto;
+}
+
+/* Banner Superior Stripe */
+.cc-stripe-banner {
+  background-color: #0f172a; /* Slate 900 */
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Títulos Módulo Stripe */
+.cc-stripe-header {
+  margin-bottom: 48px;
+}
+
+.cc-stripe-header h2 {
+  color: #0f172a;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px 0;
+}
+
+.cc-stripe-subtitle {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: #64748b; /* Slate 500 */
+  font-size: 14px;
+}
+
+.cc-badge-priority {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #ecfdf5; /* Emerald 50 */
+  color: #059669; /* Emerald 600 */
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* Cards Wrapper Stripe */
+.cc-stripe-cards-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+/* Base Card Stripe */
+.cc-stripe-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 40px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.cc-stripe-card:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+  border-color: #cbd5e1;
+}
+
+/* Premium Styling for Popular Card */
+.cc-card-popular {
+  background-color: #f1f5f9; /* Slate 100 sutil para diferenciar */
+  border-color: #e2e8f0;
+}
+
+.cc-badge-popular {
+  position: absolute;
+  top: 32px;
+  background-color: white;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  margin-bottom: 16px;
+  display: inline-block;
+  margin-top: -12px;
+}
+
+.cc-stripe-card h3 {
+  color: #0f172a;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.01em;
+}
+
+.cc-stripe-card p {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+  min-height: 66px; /* Alinear alturas */
+}
+
+.cc-stripe-price {
+  font-size: 32px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+/* Botones Nativos Stripe Blue */
+.cc-stripe-btn {
+  display: block;
+  width: 100%;
+  background-color: #0066ff;
+  color: white !important;
+  text-align: center;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-bottom: 32px;
+}
+
+.cc-stripe-btn:hover {
+  background-color: #005ce6;
+  transform: translateY(-1px);
+}
+
+.cc-stripe-btn:active {
+  transform: translateY(0);
+}
+
+/* Checkout Features List */
+.cc-stripe-features span {
+  display: block;
+  font-size: 13px;
+  color: #475569;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.cc-stripe-features ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cc-stripe-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.cc-stripe-features svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* Responsive Stripe Module */
+@media (max-width: 768px) {
+  .cc-stripe-cards-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .cc-stripe-card {
+    padding: 32px 24px;
+  }
+  .cc-stripe-card p {
+    min-height: auto;
+  }
+  .cc-badge-popular {
+    position: relative;
+    top: 0;
+    margin-top: 0;
+  }
+}
+
+/* =========================================
+   ESTILOS: FOOTER B2B PREMIUM (LOWER)
+   ========================================= */
+.cc-footer {
+  --ft-bg: #0f172a;           /* Base Slate 900 */
+  --ft-bg-btm: #020617;       /* Base Slate 950 */
+  --ft-text: #94a3b8;         /* Textos Slate 400 */
+  --ft-text-hov: #ffffff;     /* Hover Blanco */
+  --ft-title: #f8fafc;        /* Slate 50 Títulos */
+  --ft-accent: #38bdf8;       /* Light Blue 400 */
+  --ft-border: #1e293b;       /* Bordes Slate 800 */
+  
+  background-color: var(--ft-bg);
+  color: var(--ft-text);
+  font-size: 14px;
+  line-height: 1.5;
+  border-top: 1px solid var(--ft-border);
+}
+
+/* Container & Grid (4 Columns) */
+.cc-footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+.cc-footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px 32px;
+}
+
+/* Typography & Links */
+.cc-footer h3 {
+  color: var(--ft-title);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.01em;
+}
+
+.cc-footer a {
+  color: var(--ft-text);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.cc-footer a:hover {
+  color: var(--ft-text-hov);
+}
+
+.cc-footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Col 1: Brand (Logo Invertido) */
+.cc-brand-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cc-footer-logo {
+  max-width: 200px;
+  display: block;
+  margin-bottom: 20px;
+  /* MAGIA: Convierte tu logo negro a blanco puro */
+  filter: brightness(0) invert(1); 
+  opacity: 0.95;
+}
+
+.cc-brand-desc {
+  margin: 0;
+  color: var(--ft-text);
+  line-height: 1.6;
+  max-width: 280px;
+}
+
+/* Listas de Enlaces (Col 2) */
+.cc-link-list li a {
+  display: inline-block;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+.cc-link-list li a:hover {
+  color: var(--ft-accent);
+  border-bottom-color: var(--ft-accent);
+}
+
+/* Contacto y Líneas Directas (Col 3 & 4) */
+.cc-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.cc-icon {
+  margin-top: 2px;
+  color: var(--ft-accent);
+  flex-shrink: 0;
+}
+
+.cc-icon-muted {
+  color: #64748b; /* Slate 500 */
+}
+
+.cc-contact-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.cc-contact-text strong {
+  color: var(--ft-title);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.cc-contact-text .cc-text-muted {
+  color: #64748b; /* Slate 500 */
+  font-weight: 400;
+}
+
+/* Bottom Bar */
+.cc-footer-bottom {
+  background-color: var(--ft-bg-btm);
+  border-top: 1px solid var(--ft-border);
+  padding: 24px;
+}
+
+.cc-footer-bottom-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.cc-footer-bottom p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.cc-legal-links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.cc-legal-links a {
+  color: #64748b;
+}
+
+.cc-legal-links a:hover {
+  color: var(--ft-text-hov);
+}
+
+.cc-separator {
+  color: var(--ft-border);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .cc-footer-grid {
+    grid-template-columns: 1fr 1fr; /* 2 Columnas Tablet */
+  }
+}
+
+@media (max-width: 640px) {
+  .cc-footer-container {
+    padding: 48px 24px;
+  }
+  .cc-footer-grid {
+    grid-template-columns: 1fr; /* 1 Columna Mobile */
+    gap: 40px;
+  }
+  .cc-brand-desc {
+    max-width: 100%;
+  }
+  .cc-footer-bottom-container {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+
+/* Menu CSS */
+/* Menu CSS */
+
+/* Menu Button */
+.cc-menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background-color: #f1f5f9;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 50;
+}
+
+.cc-menu-button:hover {
+  background-color: #e2e8f0;
+}
+
+.cc-menu-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Menu Panel (Overlay) */
+.cc-menu-wrapper {
+  position: relative;
+  z-index: 40;
+}
+
+.cc-menu-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.cc-menu-panel.menu-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Layout */
+.cc-menu-outer {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 24px 40px;
+}
+
+.cc-menu-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+@media (max-width: 1024px) {
+  .cc-menu-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Typography & Lists */
+.cc-menu-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 24px;
+  letter-spacing: 0.1em;
+}
+
+.cc-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cc-menu-item-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.cc-menu-item-heading-icon {
+  width: 18px;
+  height: 18px;
+  color: #3b82f6;
+}
+
+.cc-menu-subitem {
+  margin-bottom: 10px;
+  padding-left: 26px;
+}
+
+.cc-menu-link {
+  color: #475569;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.cc-menu-link:hover {
+  color: #3b82f6;
+}
+
+.cc-menu-section-spacer {
+  margin-top: 24px;
+}
+
+/* Cards */
+.cc-menu-top-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .cc-menu-top-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cc-menu-card, .cc-solutions-card, .cc-info-card, .cc-brand-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Solutions List */
+.cc-solutions-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+}
+
+.cc-solutions-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #475569;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.cc-solutions-link:hover {
+  color: #3b82f6;
+}
+
+.cc-solutions-icon {
+  width: 20px;
+  height: 20px;
+  color: #94a3b8;
+}
+
+/* Info Card */
+.cc-info-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.cc-info-links-list {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cc-wa-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #25d366;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.cc-wa-button:hover {
+  background-color: #128c7e;
+}
+
+.cc-wa-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Brands Right Side */
+.cc-brand-card {
+  background-color: #0f172a;
+  color: white;
+  height: 100%;
+}
+
+.cc-brand-heading {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.cc-brand-subheading {
+  color: #94a3b8;
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+.cc-primary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #3b82f6;
+  color: white;
+  padding: 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 32px;
+  transition: background-color 0.2s ease;
+}
+
+.cc-primary-button:hover {
+  background-color: #2563eb;
+}
+
+.cc-primary-button-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.cc-brand-logos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+}
+
+.cc-brand-logo-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s ease;
+}
+
+.cc-brand-logo-link:hover {
+  color: white;
+}
+
+.cc-brand-logo-favicon img {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background: white;
+  padding: 2px;
+}
+
