@@ -1,6 +1,7 @@
 // No dotenv needed since we use --env-file
 const { createClient } = require('@supabase/supabase-js');
 
+console.log("Key length:", process.env.SUPABASE_SERVICE_ROLE_KEY?.length);
 const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
 
 async function run() {

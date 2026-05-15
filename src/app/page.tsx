@@ -74,19 +74,19 @@ export default async function ServicesCatalogPage() {
   if (!error && dbConcepts && dbConcepts.length > 0) {
     // Attempt to map real DB data if available and has price
     const validConcepts = dbConcepts.filter(c => {
-      const p = c.price || c.sale_price || c.unit_price;
-      return p !== null && p !== undefined && Number(p) > 0;
+      const p = c.basePrice || c.price || c.sale_price;
+      return p !== null && p !== undefined && Number(p) > 0 && c.type === 'SERVICE';
     });
 
     if (validConcepts.length > 0) {
       services = validConcepts.map((c, i) => ({
         id: c.id || `s-${i}`,
-        name: c.description || c.name || 'Servicio',
-        sku: c.sku || c.part_number || c.model || 'N/A',
-        category: c.category || c.brand || 'General',
-        price: Number(c.price || c.sale_price || c.unit_price),
-        image_url: c.image_url || null,
-        features: []
+        name: c.title || c.name || 'Servicio',
+        sku: c.satCode || c.sku || 'SRV-ESP',
+        category: 'Mano de Obra', // Defaulting to 'Mano de Obra' since ConceptCategory requires additional RLS permission
+        price: Number(c.basePrice || c.price || 0),
+        image_url: c.imageUrl || c.image_url || null,
+        features: c.description ? [c.description] : []
       }));
       usingMockData = false;
     }
