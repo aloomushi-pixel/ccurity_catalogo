@@ -26,7 +26,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Servicio no encontrado | CCURITY' };
   }
 
-  const catName = service.ConceptCategory?.name || 'Servicio Especializado';
+  const cat = Array.isArray(service.ConceptCategory) ? service.ConceptCategory[0] : service.ConceptCategory;
+  const catName = cat?.name || 'Servicio Especializado';
   const img = service.imageUrl || service.image_url || 'https://catalogo.ccurity.com.mx/images/services/tech_infrastructure.png';
 
   return {
@@ -64,7 +65,8 @@ export default async function ServicePage({ params }: PageProps) {
     );
   }
 
-  const categoryName = service.ConceptCategory?.name || 'Mano de Obra General';
+  const catPage = Array.isArray(service.ConceptCategory) ? service.ConceptCategory[0] : service.ConceptCategory;
+  const categoryName = catPage?.name || 'Mano de Obra General';
   
   // Dynamic Image Fallback Mapping
   const t = service.title.toLowerCase();

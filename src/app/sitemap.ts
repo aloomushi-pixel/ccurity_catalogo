@@ -14,7 +14,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Rutas dinámicas
   const serviceUrls = (services || []).map((service) => {
-    const categoryName = service.ConceptCategory?.name || 'Mano de Obra General';
+    const cat = Array.isArray(service.ConceptCategory) ? service.ConceptCategory[0] : service.ConceptCategory;
+    const categoryName = cat?.name || 'Mano de Obra General';
     return {
       url: `${baseUrl}${generateServicePath(categoryName, service.title)}`,
       lastModified: new Date(service.updatedAt || new Date()),
