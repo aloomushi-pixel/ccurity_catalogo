@@ -21,44 +21,80 @@ export default function Header() {
 
   return (
     <>
-      {/*  */}
-<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Ccurity",
-  "url": "https://ccurity.com.mx/",
-  "description": "Distribución e integración de soluciones de seguridad, automatización e infraestructura crítica.",
-  "sameAs": [
-    "https://wa.me/message/EFFSNE2UP3T7N1"
-  ],
-  "hasPart": [
-    {
-      "@type": "SiteNavigationElement",
-      "name": "Menú Principal",
-      "url": "https://ccurity.com.mx/"
-    }
-  ]
-}
-` }} />
+      {/* JSON-LD Structured Data */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ccurity",
+        "url": "https://ccurity.com.mx/",
+        "description": "Distribución e integración de soluciones de seguridad, automatización e infraestructura crítica.",
+        "sameAs": [
+          "https://wa.me/message/EFFSNE2UP3T7N1"
+        ],
+        "hasPart": [
+          {
+            "@type": "SiteNavigationElement",
+            "name": "Menú Principal",
+            "url": "https://ccurity.com.mx/"
+          }
+        ]
+      }
+      ` }} />
 
-<header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 backdrop-blur-md">
-  <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-6">
-    <div className="flex-1"></div>
-
+<header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white shadow-sm">
+  <div className="mx-auto flex h-20 max-w-[1440px] items-center gap-6 px-6">
+    
     {/* Menu Button */}
-    <button id="menu-button" type="button" className={`cc-menu-button ${isOpen ? '!bg-slate-200' : '!bg-white/50'} hover:!bg-slate-100`} onClick={toggleMenu} aria-expanded={isOpen ? "true" : "false"} aria-controls="menu" aria-label="Abrir menú de navegación">
-  <svg className="cc-menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-  </svg>
-</button>
+    <button 
+      id="menu-button" 
+      type="button" 
+      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-slate-300 text-slate-600 transition-colors hover:bg-slate-50 ${isOpen ? 'bg-slate-100' : 'bg-white'}`} 
+      onClick={toggleMenu} 
+      aria-expanded={isOpen ? "true" : "false"} 
+      aria-controls="menu" 
+      aria-label="Abrir menú de navegación"
+    >
+      {isOpen ? (
+        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      ) : (
+        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      )}
+    </button>
+
+    {/* Logo Link back to Main Site */}
+    <Link href="https://ccurity.com.mx/" className="flex shrink-0 items-center transition-opacity hover:opacity-80">
+      <span className="text-3xl font-black tracking-tighter text-[#004A7F]">
+        C<span className="text-[#4D4D4D]">·</span>CURITY
+      </span>
+    </Link>
+
+    {/* Search Bar */}
+    <div className="flex flex-1 items-center justify-start pl-4 md:pl-8">
+      <div className="relative w-full max-w-[600px]">
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+          <svg className="h-5 w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <input 
+          type="text" 
+          placeholder="Buscar productos, servicios..." 
+          className="h-11 w-full rounded-full border border-slate-300 bg-white pl-11 pr-4 text-sm text-slate-800 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+        />
+      </div>
+    </div>
+
   </div>
 </header>
 
-{/*  */}
+{/* Mega Menu Wrapper */}
 <nav className="cc-menu-wrapper" aria-label="Menú principal">
-  
-  <div id="menu" className="cc-menu-panel" style={{"overflowY":"auto"}} aria-hidden="true">
+  <div id="menu" className={`cc-menu-panel ${isOpen ? 'menu-open' : ''}`} style={{ overflowY: 'auto' }} aria-hidden={isOpen ? "false" : "true"}>
     <div className="cc-menu-outer">
       <div className="cc-menu-layout">
         
