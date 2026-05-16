@@ -62,29 +62,47 @@ const MOCK_SERVICES = [
   }
 ];
 
+const MOCK_PRODUCTS = [
+  {
+    id: 'p1',
+    name: 'Cámara IP Domo 4MP',
+    sku: 'PROD-CCTV-01',
+    category: 'Equipos',
+    price: 1850.00,
+    image_url: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=2000',
+    features: ['Visión nocturna', 'Resistencia IP67', 'PoE']
+  },
+  {
+    id: 'p2',
+    name: 'Cable UTP Cat 6 (Bobina 305m)',
+    sku: 'PROD-CBL-02',
+    category: 'Materiales',
+    price: 2100.00,
+    image_url: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2000',
+    features: ['100% Cobre', 'Uso interior', 'Color Azul']
+  }
+];
+
 export default async function ServicesCatalogPage() {
   // We fetch concepts, and we will filter in JS to avoid PostgREST column name crashes
   const { data: dbConcepts, error } = await supabase
     .from('MasterConcept')
     .select('*, ConceptCategory(name)')
-    .limit(100);
+    .limit(300);
 
   let services = MOCK_SERVICES;
+  let products = MOCK_PRODUCTS;
   let usingMockData = true;
 
   if (!error && dbConcepts && dbConcepts.length > 0) {
-    // Attempt to map real DB data if available and has price
     const validConcepts = dbConcepts.filter(c => {
       const p = c.basePrice || c.price || c.sale_price;
-      return p !== null && p !== undefined && Number(p) > 0 && c.type === 'SERVICE';
+      return p !== null && p !== undefined && Number(p) > 0;
     });
 
     if (validConcepts.length > 0) {
-      services = validConcepts.map((c, i) => {
-        // Dynamic Category Mapping from the Database
-        const dbCategoryName = c.ConceptCategory?.name || 'Mano de Obra General';
-
-        // Fallback Mapping for Images (Until the user updates the DB with the SQL script)
+      const mappedConcepts = validConcepts.map((c, i) => {
+        const dbCategoryName = c.ConceptCategory?.name || 'General';
         const t = c.title.toLowerCase();
         let fallbackCat = 'General';
         if (t.includes('cctv') || t.includes('video') || t.includes('camara') || t.includes('cámara')) fallbackCat = 'Videovigilancia';
@@ -95,7 +113,6 @@ export default async function ServicesCatalogPage() {
         else if (t.includes('ranurado') || t.includes('registro') || t.includes('cimentación') || t.includes('soporte')) fallbackCat = 'Infraestructura';
         else if (t.includes('rastreo') || t.includes('gps')) fallbackCat = 'Rastreo Vehicular';
 
-        // Dynamic Image Fallback Mapping
         let img = c.imageUrl || c.image_url || null;
         if (!img) {
           if (fallbackCat === 'Videovigilancia') img = '/images/services/tech_cctv.png';
@@ -109,74 +126,69 @@ export default async function ServicesCatalogPage() {
         }
 
         return {
-          id: c.id || `s-${i}`,
-          name: c.title || c.name || 'Servicio',
-          sku: c.satCode || c.sku || 'SRV-ESP',
+          id: c.id || `i-${i}`,
+          name: c.title || c.name || 'Item',
+          sku: c.satCode || c.sku || 'N/A',
           category: dbCategoryName,
           price: Number(c.basePrice || c.price || 0),
           image_url: img,
-          features: c.description ? [c.description] : []
+          features: c.description ? [c.description] : [],
+          type: c.type || 'SERVICE'
         };
       });
+
+      services = mappedConcepts.filter(c => c.type === 'SERVICE' || c.type === 'MAINTENANCE');
+      products = mappedConcepts.filter(c => c.type === 'EQUIPMENT' || c.type === 'MATERIAL');
+      
+      // If db has no products but has services, still show mock products so we can see the layout
+      if (products.length === 0) {
+        products = MOCK_PRODUCTS;
+      }
+
       usingMockData = false;
     }
   }
 
-  // Extract unique categories from actual data
-  const uniqueCats = Array.from(new Set(services.map(s => s.category)));
-  const categories = ['Todos', ...uniqueCats.filter(c => c !== 'Todos')];
+  // Extract unique categories
+  const uniqueServiceCats = Array.from(new Set(services.map(s => s.category)));
+  const serviceCategories = ['Todos', ...uniqueServiceCats.filter(c => c !== 'Todos')];
+
+  const uniqueProductCats = Array.from(new Set(products.map(s => s.category)));
+  const productCategories = ['Todos', ...uniqueProductCats.filter(c => c !== 'Todos')];
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900 selection:bg-blue-500/30 font-sans">
       
-      {/* Hero Section */}
-      <header className="relative pt-12 pb-16 overflow-hidden bg-white">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-50 via-white to-white opacity-50"></div>
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-50/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-        
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl">
-            <div className="flex flex-col mb-8">
-              <span className="text-3xl font-black tracking-tighter text-slate-900">
-                C-CURITY
-              </span>
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">
-                Industrial Solutions
-              </span>
-            </div>
-
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold tracking-widest uppercase mb-6">
-              <Zap className="h-3.5 w-3.5" />
-              <span>División de Servicios B2B</span>
-            </div>
-            
-            <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-neutral-900 leading-[1.1] mb-8">
-              Mano de Obra<br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Especializada.</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-neutral-500 max-w-2xl leading-relaxed mb-10 font-light">
-              Catálogo estructurado de servicios para integradores. Encuentra costos exactos de instalación, configuración y mantenimiento para armar tus presupuestos con precisión milimétrica.
-            </p>
-
-            <div className="flex items-center gap-4 mb-10">
-              <button className="px-8 py-4 rounded-full bg-blue-600 text-white text-lg font-medium hover:bg-blue-700 transition-all hover:shadow-lg hover:shadow-blue-500/30 active:scale-95">
-                Cotizar Proyecto
-              </button>
-            </div>
-
-            {usingMockData && (
-              <div className="inline-flex items-center gap-3 px-4 py-3 rounded-xl bg-yellow-50 border border-yellow-200 text-yellow-800 text-sm font-medium mb-8">
-                <span className="flex h-2 w-2 rounded-full bg-yellow-500 animate-pulse"></span>
-                Visualizando diseño con datos de prueba (Base de Datos protegida por RLS)
-              </div>
-            )}
+      {usingMockData && (
+        <div className="container mx-auto px-6 mt-8">
+          <div className="inline-flex items-center gap-3 px-4 py-3 rounded-xl bg-yellow-50 border border-yellow-200 text-yellow-800 text-sm font-medium mb-2">
+            <span className="flex h-2 w-2 rounded-full bg-yellow-500 animate-pulse"></span>
+            Visualizando diseño con algunos datos de prueba (Base de Datos protegida)
           </div>
         </div>
-      </header>
+      )}
 
-      {/* Catálogo Interactivo (Client Component) */}
-      <CatalogGrid services={services} categories={categories} />
+      {/* Catálogo Interactivo (Client Component) - Servicios */}
+      <CatalogGrid 
+        items={services} 
+        categories={serviceCategories}
+        title={<>Catálogo<br/>de</>}
+        highlightText="Servicios"
+        subtitle="Selecciona una categoría para filtrar los resultados o navega por el inventario completo."
+        buttonText="Cotizar"
+      />
+
+      {/* Catálogo Interactivo (Client Component) - Productos */}
+      <div className="border-t border-neutral-200">
+        <CatalogGrid 
+          items={products} 
+          categories={productCategories}
+          title="Catálogo de"
+          highlightText="Productos"
+          subtitle="Equipos y materiales de grado industrial para tus implementaciones."
+          buttonText="Ver Producto"
+        />
+      </div>
     </div>
   );
 }

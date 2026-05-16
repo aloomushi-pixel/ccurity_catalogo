@@ -16,16 +16,20 @@ export type ServiceItem = {
 };
 
 interface CatalogGridProps {
-  services: ServiceItem[];
+  items: ServiceItem[];
   categories: string[];
+  title: React.ReactNode;
+  highlightText: string;
+  subtitle: string;
+  buttonText?: string;
 }
 
-export function CatalogGrid({ services, categories }: CatalogGridProps) {
+export function CatalogGrid({ items, categories, title, highlightText, subtitle, buttonText = "Cotizar" }: CatalogGridProps) {
   const [selectedCategory, setSelectedCategory] = useState('Todos');
 
-  const filteredServices = selectedCategory === 'Todos'
-    ? services
-    : services.filter(s => s.category === selectedCategory);
+  const filteredItems = selectedCategory === 'Todos'
+    ? items
+    : items.filter(s => s.category === selectedCategory);
 
   return (
     <div className="bg-neutral-100 py-16">
@@ -35,10 +39,10 @@ export function CatalogGrid({ services, categories }: CatalogGridProps) {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-2xl">
             <h2 className="text-4xl font-bold tracking-tight text-neutral-900 mb-4">
-              Catálogo de <br/><span className="text-blue-600">Servicios</span>
+              {title} <br/><span className="text-blue-600">{highlightText}</span>
             </h2>
             <p className="text-neutral-500 text-lg">
-              Selecciona una categoría para filtrar los resultados o navega por el inventario completo.
+              {subtitle}
             </p>
           </div>
           
@@ -62,8 +66,8 @@ export function CatalogGrid({ services, categories }: CatalogGridProps) {
 
         {/* Grid de Servicios */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredServices.length > 0 ? (
-            filteredServices.map((service) => {
+          {filteredItems.length > 0 ? (
+            filteredItems.map((service) => {
               const path = generateServicePath(service.category, service.name);
               return (
                 <Link href={path} key={service.id} className="group flex flex-col bg-white rounded-2xl border border-neutral-200/60 overflow-hidden hover:shadow-2xl hover:shadow-blue-900/5 hover:-translate-y-1 transition-all duration-300">
@@ -117,8 +121,9 @@ export function CatalogGrid({ services, categories }: CatalogGridProps) {
                         </span>
                       </div>
                       
-                      <div className="h-10 w-10 rounded-full bg-neutral-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                        <ArrowRight className="h-5 w-5" />
+                      <div className="h-10 px-4 rounded-full bg-neutral-50 flex items-center justify-center gap-2 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <span className="text-sm font-bold tracking-wide">{buttonText}</span>
+                        <ArrowRight className="h-4 w-4" />
                       </div>
                     </div>
                   </div>
