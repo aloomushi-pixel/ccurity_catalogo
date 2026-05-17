@@ -42,10 +42,10 @@ export default function Header() {
       }
       ` }} />
 
-<header className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white shadow-sm">
-  <div className="mx-auto flex flex-wrap md:flex-nowrap min-h-[80px] md:h-20 max-w-[1440px] items-center justify-between gap-4 md:gap-6 px-4 md:px-6 py-3 md:py-0">
+<header className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white shadow-sm overflow-hidden">
+  <div className="mx-auto flex flex-nowrap h-20 max-w-[1440px] items-center justify-between gap-2 md:gap-6 px-4 md:px-6">
     
-    <div className="flex items-center gap-4 md:gap-6">
+    <div className="flex items-center gap-2 md:gap-6 shrink-0">
       {/* Menu Button */}
     <button 
       id="menu-button" 
@@ -67,8 +67,8 @@ export default function Header() {
     </button>
 
         {/* Animated Logo Link back to Main Site */}
-    <Link href="https://ccurity.com.mx/" className="flex shrink-0 items-center transition-opacity hover:opacity-80 alogo" style={{ width: '180px' }}>
-      <svg className="cc-logo-svg cc-logo-desktop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23923.04 6483.83">
+    <Link href="https://ccurity.com.mx/" className="flex shrink-0 items-center transition-opacity hover:opacity-80 alogo max-w-[120px] md:max-w-[180px] overflow-hidden" style={{ width: '180px' }}>
+      <svg className="cc-logo-svg cc-logo-desktop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23923.04 6483.83" style={{ minWidth: '120px' }}>
         <g>
             
             <rect className="cc-fil0 cc-str0" x="8.47" y="8.47" width="23906.11" height="6466.89" style={{stroke: "none"}} />
@@ -104,17 +104,17 @@ export default function Header() {
     </div>
 
     {/* Search Bar */}
-    <div className="flex w-full md:w-auto md:flex-1 items-center justify-start md:pl-8 order-3 md:order-none mt-2 md:mt-0">
-      <div className="relative w-full max-w-[600px]">
-        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-          <svg className="h-5 w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div className="flex flex-1 min-w-[80px] max-w-[600px] items-center justify-end md:justify-start ml-2 md:ml-0 md:pl-8">
+      <div className="relative w-full">
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 md:pl-4">
+          <svg className="h-4 w-4 md:h-5 md:w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
         </div>
         <input 
           type="text" 
-          placeholder="Buscar productos, servicios..." 
-          className="h-11 w-full rounded-full border border-slate-300 bg-white pl-11 pr-4 text-sm text-slate-800 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          placeholder="Buscar..." 
+          className="h-10 md:h-11 w-full rounded-full border border-slate-300 bg-white pl-9 md:pl-11 pr-3 md:pr-4 text-xs md:text-sm text-slate-800 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
         />
       </div>
     </div>
@@ -124,9 +124,9 @@ export default function Header() {
 
 {/* Mega Menu Wrapper */}
 <nav className="cc-menu-wrapper" aria-label="Menú principal">
-  <div id="menu" className={`cc-menu-panel bg-white/70 backdrop-blur-lg ${isOpen ? 'menu-open' : ''}`} style={{ overflowY: 'auto' }} aria-hidden={isOpen ? "false" : "true"}>
-    <div className="cc-menu-outer">
-      <div className="cc-menu-layout">
+  <div id="menu" className={`cc-menu-panel bg-white/70 backdrop-blur-lg ${isOpen ? 'menu-open' : ''}`} style={{ overflowY: 'auto', overflowX: 'hidden' }} aria-hidden={isOpen ? "false" : "true"}>
+    <div className="cc-menu-outer w-full max-w-[100vw] overflow-hidden box-border">
+      <div className="cc-menu-layout min-w-0">
         
         <div className="cc-menu-left">
           <div className="cc-menu-left-inner">
@@ -359,10 +359,10 @@ export default function Header() {
               </div>
             </div>
 
-            <div className="cc-info-card overflow-hidden">
-              <div className="cc-info-card-inner">
-                <div className="cc-info-layout flex flex-col md:flex-row md:items-center relative gap-4 md:gap-0">
-                  <div className="cc-info-carousel overflow-hidden w-full relative flex items-center md:pr-[120px]">
+            <div className="cc-info-card overflow-hidden min-w-0">
+              <div className="cc-info-card-inner min-w-0">
+                <div className="cc-info-layout flex flex-col md:flex-row md:items-center relative gap-4 md:gap-0 min-w-0">
+                  <div className="cc-info-carousel overflow-hidden w-full relative flex items-center md:pr-[120px] min-w-0">
                     <div className="flex animate-marquee whitespace-nowrap w-full text-[13px] font-medium text-slate-500">
                       <div className="flex min-w-full justify-around items-center px-4">
                         <Link href="https://ccurity.com.mx/acerca-de-nosotros/" className="mx-4 md:mx-6 hover:text-blue-500 transition-colors cc-menu-link">Acerca de nosotros</Link>
