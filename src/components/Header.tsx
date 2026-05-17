@@ -359,28 +359,28 @@ export default function Header() {
 
             <div className="cc-info-card overflow-hidden">
               <div className="cc-info-card-inner">
-                <div className="cc-info-layout relative">
-                  <div className="cc-info-carousel overflow-hidden w-full relative flex items-center pr-[120px]">
+                <div className="cc-info-layout flex flex-col md:flex-row md:items-center relative gap-4 md:gap-0">
+                  <div className="cc-info-carousel overflow-hidden w-full relative flex items-center md:pr-[120px]">
                     <div className="flex animate-marquee whitespace-nowrap w-full text-[13px] font-medium text-slate-500">
                       <div className="flex min-w-full justify-around items-center px-4">
-                        <Link href="https://ccurity.com.mx/acerca-de-nosotros/" className="mx-6 hover:text-blue-500 transition-colors cc-menu-link">Acerca de nosotros</Link>
-                        <Link href="https://ccurity.com.mx/bolsa-de-trabajo/" className="mx-6 hover:text-blue-500 transition-colors cc-menu-link">Bolsa de trabajo</Link>
-                        <Link href="https://ccurity.com.mx/aviso-de-privacidad/" className="mx-6 hover:text-blue-500 transition-colors cc-menu-link">Política de privacidad</Link>
-                        <Link href="https://ccurity.com.mx/terminos-y-condiciones-de-uso/" className="mx-6 hover:text-blue-500 transition-colors cc-menu-link">Términos y condiciones</Link>
-                        <Link href="https://ccurity.com.mx/hoja-de-datos-ccurity/" className="mx-6 hover:text-blue-500 transition-colors cc-menu-link">Datos fiscales y de pago</Link>
+                        <Link href="https://ccurity.com.mx/acerca-de-nosotros/" className="mx-4 md:mx-6 hover:text-blue-500 transition-colors cc-menu-link">Acerca de nosotros</Link>
+                        <Link href="https://ccurity.com.mx/bolsa-de-trabajo/" className="mx-4 md:mx-6 hover:text-blue-500 transition-colors cc-menu-link">Bolsa de trabajo</Link>
+                        <Link href="https://ccurity.com.mx/aviso-de-privacidad/" className="mx-4 md:mx-6 hover:text-blue-500 transition-colors cc-menu-link">Política de privacidad</Link>
+                        <Link href="https://ccurity.com.mx/terminos-y-condiciones-de-uso/" className="mx-4 md:mx-6 hover:text-blue-500 transition-colors cc-menu-link">Términos y condiciones</Link>
+                        <Link href="https://ccurity.com.mx/hoja-de-datos-ccurity/" className="mx-4 md:mx-6 hover:text-blue-500 transition-colors cc-menu-link">Datos fiscales y de pago</Link>
                       </div>
                       <div className="flex min-w-full justify-around items-center px-4" aria-hidden="true">
-                        <Link href="https://ccurity.com.mx/acerca-de-nosotros/" className="mx-6 hover:text-blue-500 transition-colors cc-menu-link" tabIndex={-1}>Acerca de nosotros</Link>
-                        <Link href="https://ccurity.com.mx/bolsa-de-trabajo/" className="mx-6 hover:text-blue-500 transition-colors cc-menu-link" tabIndex={-1}>Bolsa de trabajo</Link>
-                        <Link href="https://ccurity.com.mx/aviso-de-privacidad/" className="mx-6 hover:text-blue-500 transition-colors cc-menu-link" tabIndex={-1}>Política de privacidad</Link>
-                        <Link href="https://ccurity.com.mx/terminos-y-condiciones-de-uso/" className="mx-6 hover:text-blue-500 transition-colors cc-menu-link" tabIndex={-1}>Términos y condiciones</Link>
-                        <Link href="https://ccurity.com.mx/hoja-de-datos-ccurity/" className="mx-6 hover:text-blue-500 transition-colors cc-menu-link" tabIndex={-1}>Datos fiscales y de pago</Link>
+                        <Link href="https://ccurity.com.mx/acerca-de-nosotros/" className="mx-4 md:mx-6 hover:text-blue-500 transition-colors cc-menu-link" tabIndex={-1}>Acerca de nosotros</Link>
+                        <Link href="https://ccurity.com.mx/bolsa-de-trabajo/" className="mx-4 md:mx-6 hover:text-blue-500 transition-colors cc-menu-link" tabIndex={-1}>Bolsa de trabajo</Link>
+                        <Link href="https://ccurity.com.mx/aviso-de-privacidad/" className="mx-4 md:mx-6 hover:text-blue-500 transition-colors cc-menu-link" tabIndex={-1}>Política de privacidad</Link>
+                        <Link href="https://ccurity.com.mx/terminos-y-condiciones-de-uso/" className="mx-4 md:mx-6 hover:text-blue-500 transition-colors cc-menu-link" tabIndex={-1}>Términos y condiciones</Link>
+                        <Link href="https://ccurity.com.mx/hoja-de-datos-ccurity/" className="mx-4 md:mx-6 hover:text-blue-500 transition-colors cc-menu-link" tabIndex={-1}>Datos fiscales y de pago</Link>
                       </div>
                     </div>
                   </div>
 
-                  <div className="cc-wa-wrapper absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm pl-4 shadow-[-20px_0_15px_-5px_rgba(255,255,255,0.9)] z-10">
-                    <a href="https://wa.me/525580875650" target="_blank" rel="noopener noreferrer nofollow" className="cc-wa-button">
+                  <div className="cc-wa-wrapper w-full md:w-auto static md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 bg-white/80 backdrop-blur-sm md:pl-4 shadow-none md:shadow-[-20px_0_15px_-5px_rgba(255,255,255,0.9)] z-10 flex justify-center">
+                    <a href="https://wa.me/525580875650" target="_blank" rel="noopener noreferrer nofollow" className="cc-wa-button w-full justify-center md:w-auto">
                       <svg className="cc-wa-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                       </svg>

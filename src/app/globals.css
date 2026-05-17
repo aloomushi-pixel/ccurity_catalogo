@@ -481,6 +481,7 @@ body {
   -webkit-backdrop-filter: blur(16px);
   overflow-y: auto;
   padding-top: 80px; /* Header is h-20 (80px) */
+  padding-bottom: 80px; /* Extra space for scrolling on mobile */
   opacity: 0;
   visibility: hidden;
   transform: translateY(-100%);
@@ -595,6 +596,18 @@ body {
   padding: 0;
 }
 
+@media (max-width: 1024px) {
+  .cc-solutions-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .cc-solutions-list {
+    grid-template-columns: 1fr;
+  }
+}
+
 .cc-solutions-link {
   display: flex;
   align-items: center;
@@ -623,6 +636,13 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .cc-info-layout {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 .cc-info-links-list {
