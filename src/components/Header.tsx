@@ -43,9 +43,10 @@ export default function Header() {
       ` }} />
 
 <header className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white shadow-sm">
-  <div className="mx-auto flex h-20 max-w-[1440px] items-center gap-6 px-6">
+  <div className="mx-auto flex flex-wrap md:flex-nowrap min-h-[80px] md:h-20 max-w-[1440px] items-center justify-between gap-4 md:gap-6 px-4 md:px-6 py-3 md:py-0">
     
-    {/* Menu Button */}
+    <div className="flex items-center gap-4 md:gap-6">
+      {/* Menu Button */}
     <button 
       id="menu-button" 
       type="button" 
@@ -98,11 +99,12 @@ export default function Header() {
             <path className="cc-fil2 cc-logo-part cc-icon-c"
                 d="M2675.81 1669.14c418.15,0 798.99,159.76 1084.81,421.57 87.31,84.77 -0.14,135.46 -0.14,135.46l-1084.67 0 -0.22 0c-579.62,0 -1049.48,469.92 -1049.48,1049.62 0,579.7 469.86,1049.61 1049.48,1049.61 579.62,0 1049.47,-469.91 1049.47,-1049.61 0,-91.85 -11.82,-180.92 -34,-265.82l0.01 -0.01 -0.02 -0.07 -0.06 -0.22 -0.1 -0.36 -0.13 -0.49 -0.16 -0.62 -0.19 -0.75c-3.81,-15.63 -19.88,-99.03 70.07,-99.04l1.15 -0.01 376.61 0 0.38 0.01c97.35,0.01 121.23,98.77 121.88,101.49 14.42,86.49 21.94,175.31 21.94,265.89 0,887.32 -719.31,1606.62 -1606.62,1606.62 -887.34,0 -1606.65,-719.31 -1606.65,-1606.62 0,-887.34 719.32,-1606.65 1606.65,-1606.65z" />
         </g>
-    </svg>
+      </svg>
     </Link>
+    </div>
 
     {/* Search Bar */}
-    <div className="flex flex-1 items-center justify-start pl-4 md:pl-8">
+    <div className="flex w-full md:w-auto md:flex-1 items-center justify-start md:pl-8 order-3 md:order-none mt-2 md:mt-0">
       <div className="relative w-full max-w-[600px]">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
           <svg className="h-5 w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -122,7 +124,7 @@ export default function Header() {
 
 {/* Mega Menu Wrapper */}
 <nav className="cc-menu-wrapper" aria-label="Menú principal">
-  <div id="menu" className={`cc-menu-panel ${isOpen ? 'menu-open' : ''}`} style={{ overflowY: 'auto' }} aria-hidden={isOpen ? "false" : "true"}>
+  <div id="menu" className={`cc-menu-panel bg-white/70 backdrop-blur-lg ${isOpen ? 'menu-open' : ''}`} style={{ overflowY: 'auto' }} aria-hidden={isOpen ? "false" : "true"}>
     <div className="cc-menu-outer">
       <div className="cc-menu-layout">
         
