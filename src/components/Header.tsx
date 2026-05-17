@@ -141,31 +141,32 @@ export default function Header() {
                       <svg className="cc-menu-item-heading-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                       </svg>
-                      <span>Cámaras de Seguridad</span>
+                      <span>Instalación y Configuración</span>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Cámaras Bala y Domo (IP/Analógicas)</a>
+                      <a href="#" className="cc-menu-link">Instalación de Cámaras (IP/Analógicas)</a>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Cámaras PTZ y Térmicas</a>
+                      <a href="#" className="cc-menu-link">Instalación de Cámaras PTZ</a>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Cámaras LPR (Lectura de Placas)</a>
+                      <a href="#" className="cc-menu-link">Configuración de NVR y DVR</a>
                     </li>
                     <li className="cc-menu-item-heading cc-menu-section-spacer">
                       <svg className="cc-menu-item-heading-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
-                      <span>Grabación y Visualización</span>
+                      <span>Mantenimiento CCTV</span>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">NVRs y DVRs</a>
+                      <a href="#" className="cc-menu-link">Mantenimiento Preventivo (Limpieza/Ajuste)</a>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Monitores e Interfaces</a>
+                      <a href="#" className="cc-menu-link">Mantenimiento Correctivo</a>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Accesorios de Video (Baluns, Fuentes)</a>
+                      <a href="#" className="cc-menu-link">Levantamiento y Diagnóstico</a>
                     </li>
                   </ul>
                 </div>
@@ -179,35 +180,35 @@ export default function Header() {
                       <svg className="cc-menu-item-heading-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
                       </svg>
-                      <span>Biometría y Lectores</span>
+                      <span>Instalación Biométrica</span>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Relojes Checadores y Asistencia</a>
+                      <a href="#" className="cc-menu-link">Instalación de Relojes Checadores</a>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Lectores de Huella y Rostro</a>
+                      <a href="#" className="cc-menu-link">Instalación de Lectores de Rostro/Huella</a>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Tarjetas, Tags y Accesorios</a>
+                      <a href="#" className="cc-menu-link">Enrolamiento y Capacitación</a>
                     </li>
 
                     <li className="cc-menu-item-heading cc-menu-section-spacer">
                       <svg className="cc-menu-item-heading-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
-                      <span>Acceso Físico</span>
+                      <span>Implementación Física</span>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Torniquetes y Puertas Giratorias</a>
+                      <a href="#" className="cc-menu-link">Montaje de Torniquetes (Peatonal)</a>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Barreras Vehiculares</a>
+                      <a href="#" className="cc-menu-link">Instalación de Barreras Vehiculares</a>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Motores para Portones</a>
+                      <a href="#" className="cc-menu-link">Instalación de Cerraduras y Chapas Magnéticas</a>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Cerraduras Magnéticas y Chapas</a>
+                      <a href="#" className="cc-menu-link">Sistemas de Automatización de Portones</a>
                     </li>
                   </ul>
                 </div>
@@ -215,38 +216,41 @@ export default function Header() {
 
               <div className="cc-menu-card">
                 <div className="cc-menu-card-inner">
-                  <h4 className="cc-menu-title">R E D E S  &  E N E R G I A</h4>
+                  <h4 className="cc-menu-title">I N F R A E S T R U C T U R A  &  R E D E S</h4>
                   <ul className="cc-menu-list">
                     <li className="cc-menu-item-heading">
                       <svg className="cc-menu-item-heading-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
                       </svg>
-                      <span>Infraestructura y Redes</span>
+                      <span>Cableado y Redes</span>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Switches, Routers y Access Points</a>
+                      <a href="#" className="cc-menu-link">Tendido de Nodos de Red (UTP)</a>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Cableado Estructurado (Bobinas UTP/Fibra)</a>
+                      <a href="#" className="cc-menu-link">Tendido y Fusión de Fibra Óptica</a>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Racks, Gabinetes y Accesorios</a>
+                      <a href="#" className="cc-menu-link">Peinado y Armado de Racks</a>
                     </li>
 
                     <li className="cc-menu-item-heading cc-menu-section-spacer">
                       <svg className="cc-menu-item-heading-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                       </svg>
-                      <span>Energía y Respaldo</span>
+                      <span>Canalización y Obra Civil</span>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Equipos UPS (No Breaks)</a>
+                      <a href="#" className="cc-menu-link">Instalación de Tubería (Pared Gruesa/Delgada)</a>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Paneles Solares e Inversores</a>
+                      <a href="#" className="cc-menu-link">Instalación de Charola Tipo Escalera</a>
                     </li>
                     <li className="cc-menu-subitem">
-                      <a href="#" className="cc-menu-link">Baterías de Respaldo</a>
+                      <a href="#" className="cc-menu-link">Ranurado en Muro y Registros</a>
+                    </li>
+                    <li className="cc-menu-subitem">
+                      <a href="#" className="cc-menu-link">Zanjeo y Cimentación para Postes</a>
                     </li>
                   </ul>
                 </div>
